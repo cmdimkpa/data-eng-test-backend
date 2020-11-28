@@ -83,8 +83,10 @@ def plus_one(highest_time):
 
 def isValidSecurityKey(key, mode):
     # check valid security key
+    settings = Settings()
+    print(settings)
     try:
-        return key == [keydata["auth"] for keydata in Settings() if mode.upper() == keydata["relay_mode"]][0]
+        return key == [keydata["auth"] for keydata in settings if mode.upper() == keydata["relay_mode"]][0]
     except:
         return False
 
