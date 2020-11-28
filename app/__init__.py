@@ -87,7 +87,8 @@ def isValidSecurityKey(key, mode):
     print(settings)
     try:
         return key == [keydata["auth"] for keydata in settings if mode.upper() == keydata["relay_mode"]][0]
-    except:
+    except Exception as err:
+        print(str(err))
         return False
 
 def symbol_id(data, explicit=false):
