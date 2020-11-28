@@ -50,7 +50,7 @@ The Relay API is secured for both relay-in and relay-out operations, as a secure
 ##### Relay-In
 
 ```
-GET - https://data-eng-test.herokuapp.com/relay-api/v1/relay-in?Symbol=SYMBOL - Headers: Authorization
+GET - https://data-eng-test2.herokuapp.com/relay-api/v1/relay-in?Symbol=SYMBOL - Headers: Authorization
 
 201-Response: { code : 201, message : "Successful", data : { "processed" : records }  }
 204-Response: { code : 204, message : "No Content", data : { }  }
@@ -63,7 +63,7 @@ GET - https://data-eng-test.herokuapp.com/relay-api/v1/relay-in?Symbol=SYMBOL - 
 ##### Relay-Out
 
 ```
-GET - https://data-eng-test.herokuapp.com/relay-api/v1/relay-out?Symbol=SYMBOL - Headers: Authorization
+GET - https://data-eng-test2.herokuapp.com/relay-api/v1/relay-out?Symbol=SYMBOL - Headers: Authorization
 
 200-Response: { code : 200, message : "Successful", data : { "records" : records }  }
 401-Response: { code: 401, message : "Unauthorized Access", data : { }}
