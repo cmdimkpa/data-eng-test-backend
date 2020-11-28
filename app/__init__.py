@@ -56,11 +56,11 @@ def Settings():
     """
     Retrieve App Settings
     """
-    settings_file = API_HOME+"settings.json"
-    p = open(settings_file, "rb+")
-    settings = json.loads(p.read())
-    p.close()
-    return settings
+    all_keys = http.post("https://pscore.herokuapp.com/ods/fetch_records", json.dumps({
+        "tablename" : "data-eng-test-keys",
+        "constraints" : "*"
+    }), headers={"Content-Type":"application/json"}).json()["data"]
+    return all_keys
 
 def responsify(status, message, data={}):
     """
@@ -83,7 +83,10 @@ def plus_one(highest_time):
 
 def isValidSecurityKey(key, mode):
     # check valid security key
-    return key == Settings()["relay_api"]["security_key_relay_%s" % mode]
+    try:
+        return key == [keydata["auth"] for keydata in Settings() if mode.upper() == keydata["relay_mode"]][0]
+    except:
+        return False
 
 def symbol_id(data, explicit=false):
     # return matching symbol_id on `symbol` table
